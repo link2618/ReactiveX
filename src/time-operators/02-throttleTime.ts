@@ -14,10 +14,10 @@ document.querySelector('body').append( input );
 const input$ = fromEvent( input, 'keyup' );
 
 input$.pipe(
-    throttleTime(400, asyncScheduler, {
+    throttleTime<any>(400, asyncScheduler, {
         leading: false,
         trailing: true
     }),
-    map<any, string>( ev => ev?.target?.value ),
+    map<KeyboardEvent, string>( ev => (ev?.target as HTMLInputElement)?.value ),
     distinctUntilChanged()
 ).subscribe( console.log );

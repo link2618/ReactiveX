@@ -15,6 +15,6 @@ const input$ = fromEvent<KeyboardEvent>( input, 'keyup' );
 
 input$.pipe(
     debounceTime(1000),
-    map<any, string>( ev => ev?.target?.value ),
+    map<KeyboardEvent, string>( ev => (ev?.target as HTMLInputElement)?.value ),
     distinctUntilChanged()
 ).subscribe( console.log );

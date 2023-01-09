@@ -12,7 +12,7 @@ const keyupCode$ = keyup$.pipe( map( event => event.code ) );
 
 //* pluck deprecated
 // const keyupPluck$ = keyup$.pipe( pluck('target', 'baseURI') );
-const keyupPluck$ = keyup$.pipe( map<any, string>( ev => ev?.target?.baseURI ) );
+const keyupPluck$ = keyup$.pipe( map<KeyboardEvent, string>( ev => (ev?.target as HTMLInputElement)?.baseURI ) );
 
 //* mapTo deprecated
 // const keyupMapTo$ = keyup$.pipe( mapTo('Tecla presionada') );
